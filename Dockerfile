@@ -38,6 +38,7 @@ ENV \
 	SPHINX_DIZ_DIR=/var/diz/sphinx
 EXPOSE 9312 9306
 VOLUME ["${SPHINX_INDEX_DIR}", "${SPHINX_LOG_DIR}", "${SPHINX_LIB_DIR}", "${SPHINX_RUN_DIR}", "${SPHINX_DIZ_DIR}"]
+CMD ["searchd.sh"]
 
 # scripts
 COPY searchd.sh /sbin
