@@ -28,3 +28,17 @@ RUN --mount=type=cache,target=/var/cache/poldek \
 		sphinx-2.0.10-1.1.x86_64 \
 	&& poldek --clean-whole \
 	&& exit 0
+
+# environment variables
+ENV \
+	SPHINX_INDEX_DIR=/var/idx/sphinx \
+	SPHINX_LOG_DIR=/var/log/sphinx \
+	SPHINX_LIB_DIR=/var/lib/sphinx \
+	SPHINX_RUN_DIR=/var/run/sphinx \
+	SPHINX_DIZ_DIR=/var/diz/sphinx
+EXPOSE 9312 9306
+VOLUME ["${SPHINX_INDEX_DIR}", "${SPHINX_LOG_DIR}", "${SPHINX_LIB_DIR}", "${SPHINX_RUN_DIR}", "${SPHINX_DIZ_DIR}"]
+
+# scripts
+COPY searchd.sh /sbin
+COPY indexall.sh /sbin
