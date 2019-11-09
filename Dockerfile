@@ -39,6 +39,7 @@ ENV \
 EXPOSE 9312 9306
 VOLUME ["${SPHINX_INDEX_DIR}", "${SPHINX_LOG_DIR}", "${SPHINX_LIB_DIR}", "${SPHINX_RUN_DIR}", "${SPHINX_DIZ_DIR}"]
 CMD ["searchd.sh"]
+USER "sphinx"
 
 # scripts
 COPY searchd.sh /sbin
